@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kosinka", "Kosinka\Kosinka.csproj", "{BE27F6D3-3184-C22C-B176-CAC54D7CFD0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kosinka.Desktop", "Kosinka.Desktop\Kosinka.Desktop.csproj", "{565EC52E-36B4-9E89-85B2-C02CBF482478}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE27F6D3-3184-C22C-B176-CAC54D7CFD0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE27F6D3-3184-C22C-B176-CAC54D7CFD0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE27F6D3-3184-C22C-B176-CAC54D7CFD0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE27F6D3-3184-C22C-B176-CAC54D7CFD0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{565EC52E-36B4-9E89-85B2-C02CBF482478}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{565EC52E-36B4-9E89-85B2-C02CBF482478}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{565EC52E-36B4-9E89-85B2-C02CBF482478}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{565EC52E-36B4-9E89-85B2-C02CBF482478}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3964AB9B-BE89-41F3-BA8A-F18113F243AB}
+	EndGlobalSection
+EndGlobal
