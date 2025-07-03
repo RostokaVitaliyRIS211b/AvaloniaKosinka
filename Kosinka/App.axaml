@@ -5,6 +5,8 @@
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.Styles>
+		<StyleInclude Source="/Styles/CardControlStyle.axaml"/>
+		<StyleInclude Source="/Styles/TableDeckStyle.axaml"/>
         <FluentTheme />
     </Application.Styles>
 </Application>

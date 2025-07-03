@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace Kosinka.Core.Model
         Jack,
         Queen,
         King,
-        Ace=1,
+        Ace = 1,
     }
 
     public enum CardSuit
@@ -32,10 +33,16 @@ namespace Kosinka.Core.Model
         Spade
     }
 
-    public class Card
+    public class Card : INotifyPropertyChanged
     {
         public required CardRank Rank { get; init; }
         public required CardSuit Suit { get; init; }
+
+        private int _z = 0;
+        public int Zindex { get => _z; set { _z = value; OnPropertyChanged(nameof(Zindex)); } }
+
+        private bool _isOpen = false;
+        public bool IsOpen { get => _isOpen; set { _isOpen = value; OnPropertyChanged(nameof(IsOpen)); } }
 
         public Card()
         {
@@ -47,6 +54,13 @@ namespace Kosinka.Core.Model
         {
             Rank = cardRank;
             Suit = cardSuit;
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

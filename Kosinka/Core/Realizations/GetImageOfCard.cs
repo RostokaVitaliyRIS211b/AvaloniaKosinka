@@ -2,6 +2,8 @@
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Cosinka.Viewmodel.Interfaces;
+
+using Kosinka.Attributes;
 using Kosinka.Core.Interfaces;
 using Kosinka.Core.Model;
 using System;
@@ -15,6 +17,7 @@ using System.Windows;
 
 namespace Cosinka.Viewmodel.Realizations
 {
+    [UseInApp(typeof(GetImageOfCard),KindOfRegistration.Singleton)]
     public class GetImageOfCard : IGetImageOfCard
     {
         public Bitmap CardsMapImage;
@@ -22,7 +25,7 @@ namespace Cosinka.Viewmodel.Realizations
         {
             string currentLocation = AppDomain.CurrentDomain.BaseDirectory;
             string imagePath = Path.Combine(currentLocation, "..", "..", "..", "..", "..", "..", "Kosinka","Assets", "cards.png");
-
+            CardsMapImage = new Bitmap(imagePath);
         }
 
         public IImage GetImage(Card card)

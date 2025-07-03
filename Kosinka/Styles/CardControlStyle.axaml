@@ -1,0 +1,24 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:cc ="clr-namespace:Kosinka.CustomComponents"
+		xmlns:cv ="clr-namespace:Kosinka.Converters"
+		xmlns:md ="clr-namespace:Kosinka.Core.Model">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <cc:CardControl/>
+    </Border>
+  </Design.PreviewWith>
+
+	<Style Selector=":is(cc|CardControl)">
+		<Style.Resources>
+			<cv:BoolToImageConverter x:Key="imgConv"/>
+		</Style.Resources>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Image x:DataType="cc:CardControl" Source="{Binding Card.IsOpen, Converter = {StaticResource ResourceKey=imgConv}, ConverterParameter=Card}"/>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</Styles>

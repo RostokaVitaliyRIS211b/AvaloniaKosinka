@@ -1,5 +1,9 @@
-﻿using Kosinka.Core.Interfaces;
+﻿using Cosinka.Viewmodel.Realizations;
+
+using Kosinka.Attributes;
+using Kosinka.Core.Interfaces;
 using Kosinka.Core.Model;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Kosinka.Core.Realizations
 {
+    [UseInApp(typeof(GetImageOfCard), KindOfRegistration.Transient)]
     public class ViewModelBuilder : IViewModelBuilder
     {
         private readonly Random random = new();
@@ -32,9 +37,11 @@ namespace Kosinka.Core.Realizations
                 for (int j = 0; j<i; ++j)
                 {
                     int random3 = random.Next(0, deck.Count-1);
+                    deck[random3].Zindex = j;
                     Somedeck.Add(deck[random3]);
                     deck.RemoveAt(random3);
                 }
+                Somedeck[Somedeck.Count - 1].IsOpen = true;
                 cards.Add(Somedeck);
             }
             Card[] cards1 = [.. deck];

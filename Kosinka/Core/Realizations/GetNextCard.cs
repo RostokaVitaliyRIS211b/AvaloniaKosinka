@@ -1,4 +1,7 @@
-﻿using Kosinka.Core.Interfaces;
+﻿using Cosinka.Viewmodel.Realizations;
+
+using Kosinka.Attributes;
+using Kosinka.Core.Interfaces;
 using Kosinka.Core.Model;
 
 using System;
@@ -9,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Kosinka.Core.Realizations
 {
+    [UseInApp(typeof(GetImageOfCard), KindOfRegistration.Singleton)]
     public class GetNextCard : IGetNextCard
     {
         protected int i = 0;
