@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Kosinka.Core.Realizations
 {
-    [UseInApp(typeof(GetImageOfCard), KindOfRegistration.Transient)]
+    [UseInApp(KindOfRegistration.Transient)]
     public class ViewModelBuilder : IViewModelBuilder
     {
         private readonly Random random = new();

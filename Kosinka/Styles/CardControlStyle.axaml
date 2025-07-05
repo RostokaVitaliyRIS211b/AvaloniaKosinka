@@ -8,15 +8,15 @@
       <cc:CardControl/>
     </Border>
   </Design.PreviewWith>
-
+	<Styles.Resources>
+		<cv:CardToImageConverter x:Key="imgConv"/>
+	</Styles.Resources>
 	<Style Selector=":is(cc|CardControl)">
-		<Style.Resources>
-			<cv:BoolToImageConverter x:Key="imgConv"/>
-		</Style.Resources>
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate>
-					<Image x:DataType="cc:CardControl" Source="{Binding Card.IsOpen, Converter = {StaticResource ResourceKey=imgConv}, ConverterParameter=Card}"/>
+					<Image Height="130" Width="90" Stretch="UniformToFill" x:Name="PART_img" x:DataType="cc:CardControl" Source="{TemplateBinding MyCard, Converter = {StaticResource imgConv}}"/>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>

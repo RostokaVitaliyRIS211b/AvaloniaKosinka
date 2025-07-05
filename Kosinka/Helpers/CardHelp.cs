@@ -10,6 +10,9 @@ namespace Kosinka.Helpers
 {
     public static class CardHelp
     {
+        public const int Height = 130;
+        public const int Width = 90;
+
         public static bool IsCompatable(Card card1,Card card2)
         {
             bool rank = card2.Rank-card1.Rank==1;
@@ -24,6 +27,7 @@ namespace Kosinka.Helpers
             }
             return rank && suit;
         }
+
         public static bool IsAceCompatable(Card card1, Card card2)
         {
             bool rank = card1.Rank-card2.Rank==1;

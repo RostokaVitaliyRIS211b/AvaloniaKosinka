@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 
 namespace Kosinka.Core.Realizations
 {
-    [UseInApp(typeof(GetImageOfCard), KindOfRegistration.Singleton)]
+    [UseInApp(KindOfRegistration.Transient)]
     public class GetNextCard : IGetNextCard
     {
-        protected int i = 0;
+        protected int i = -1;
 
         public Card? NextCard(IList<Card> cards)
         {
@@ -23,6 +23,7 @@ namespace Kosinka.Core.Realizations
                 i = (i + 1) % cards.Count;
             else
                 return null;
+            cards[i].IsOpen = true;
             return cards[i];
         }
     }

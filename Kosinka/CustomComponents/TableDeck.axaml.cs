@@ -13,10 +13,17 @@ public partial class TableDeck : TemplatedControl
 {
     private Canvas canvas;
     public static readonly StyledProperty<ObservableCollection<Card>> CardsProperty = AvaloniaProperty.Register<TableDeck, ObservableCollection<Card>>(nameof(Cards));
+    public static readonly StyledProperty<Canvas> MainCanvasProperty = AvaloniaProperty.Register<CardControl, Canvas>(nameof(MainCanvas));
     public ObservableCollection<Card> Cards
     {
         get => GetValue(CardsProperty);
         set => SetValue(CardsProperty,value);
+    }
+
+    public Canvas MainCanvas
+    {
+        get => GetValue(MainCanvasProperty);
+        set => SetValue(MainCanvasProperty, value);
     }
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)

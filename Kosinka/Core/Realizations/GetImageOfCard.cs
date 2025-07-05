@@ -17,14 +17,14 @@ using System.Windows;
 
 namespace Cosinka.Viewmodel.Realizations
 {
-    [UseInApp(typeof(GetImageOfCard),KindOfRegistration.Singleton)]
+    [UseInApp(KindOfRegistration.Singleton)]
     public class GetImageOfCard : IGetImageOfCard
     {
         public Bitmap CardsMapImage;
         public GetImageOfCard()
         {
             string currentLocation = AppDomain.CurrentDomain.BaseDirectory;
-            string imagePath = Path.Combine(currentLocation, "..", "..", "..", "..", "..", "..", "Kosinka","Assets", "cards.png");
+            string imagePath = Path.Combine(currentLocation, "..", "..", "..", "..", "Kosinka","Assets", "cards.png");
             CardsMapImage = new Bitmap(imagePath);
         }
 

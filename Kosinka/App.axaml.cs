@@ -11,8 +11,10 @@ using Kosinka.Views;
 
 using Microsoft.Extensions.DependencyInjection;
 
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Reflection;
 
 namespace Kosinka;
 
@@ -28,7 +30,8 @@ public partial class App : Application
         // Line below is needed to remove Avalonia data validation.
         // Without this line you will get duplicate validations from both Avalonia and CT
         BindingPlugins.DataValidators.RemoveAt(0);
-        IViewModelBuilder viewModelBuilder = UseInAppAttribute.ServiceProvider.GetRequiredService<IViewModelBuilder>();
+        IViewModelBuilder viewModelBuilder = ServiceHelper.ServiceProvider.GetRequiredService<IViewModelBuilder>();
+        IGetNextCard getNextCard = ServiceHelper.ServiceProvider.GetRequiredService<IGetNextCard>();
         List<ObservableCollection<Card>> Cards = [.. viewModelBuilder.GetDecks()];
 
         ObservableCollection<Card> Deck = Cards[^1];
@@ -43,6 +46,7 @@ public partial class App : Application
 
         var context = new MainViewModel()
         {
+            GetNext = getNextCard,
             Deck = Deck,
             TableDeck1 = TableDeck1,
             TableDeck2 = TableDeck2,

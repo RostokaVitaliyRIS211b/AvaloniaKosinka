@@ -1,6 +1,8 @@
 ﻿using Avalonia.Data;
 using Avalonia.Data.Converters;
 
+using Cosinka.Viewmodel.Realizations;
+
 using Kosinka.Attributes;
 using Kosinka.Core.Interfaces;
 using Kosinka.Core.Model;
@@ -18,18 +20,14 @@ using System.Threading.Tasks;
 
 namespace Kosinka.Converters
 {
-    internal class BoolToImageConverter : IValueConverter
+    internal class CardToImageConverter : IValueConverter
     {
-        public static readonly IGetImageOfCard getImageOfCard;
-        static BoolToImageConverter()
-        {
-            getImageOfCard = UseInAppAttribute.ServiceProvider.GetRequiredService<IGetImageOfCard>();
-        }
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            if(value is bool b && parameter is Card card)
+            IGetImageOfCard getImageOfCard = ServiceHelper.ServiceProvider.GetRequiredService<IGetImageOfCard>();
+            if (value is Card card)
             {
-                if(b)
+                if(card.IsOpen)
                 {
                     return getImageOfCard.GetImage(card);
                 }

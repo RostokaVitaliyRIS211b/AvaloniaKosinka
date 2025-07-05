@@ -3,9 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Kosinka.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="720"
              x:Class="Kosinka.Views.MainView"
-             x:DataType="vm:MainViewModel">
+             x:DataType="vm:MainViewModel"
+			 xmlns:cc ="clr-namespace:Kosinka.CustomComponents">
   <Design.DataContext>
     <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
@@ -15,6 +16,9 @@
 		<ImageBrush Stretch="UniformToFill" Source="/Assets/back.jpg"/>
 	</UserControl.Background>
 	<Canvas x:Name="MainCanvas">
-		
+		<Button Command="{Binding NextCardCommand}" Margin="10" Height="130" Width="90">
+			<Image Stretch="UniformToFill" Source="/Assets/card.jpg"/>
+		</Button>
+		<cc:CardControl Canvas.Top="10" Canvas.Left="150" MyCard="{Binding CurrentCard}" MainCanvas="{Binding ,ElementName=MainCanvas}"/>
 	</Canvas>
 </UserControl>
