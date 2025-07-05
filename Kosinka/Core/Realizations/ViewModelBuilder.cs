@@ -37,7 +37,7 @@ namespace Kosinka.Core.Realizations
                 for (int j = 0; j<i; ++j)
                 {
                     int random3 = random.Next(0, deck.Count-1);
-                    deck[random3].Zindex = j;
+                    deck[random3].ZIndex = j-i+1;
                     Somedeck.Add(deck[random3]);
                     deck.RemoveAt(random3);
                 }

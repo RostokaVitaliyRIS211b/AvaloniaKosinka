@@ -16,7 +16,7 @@ namespace Kosinka.Helpers
         {
             string currentDir = AppDomain.CurrentDomain.BaseDirectory;
             string generalImagePath = Path.Combine("..", "..", "..", "..", "Kosinka", "Assets");
-            BackOfCard = new Bitmap(Path.Combine(generalImagePath, "card.jpg"));
+            BackOfCard = new Bitmap(Path.Combine(generalImagePath, "card.png"));
         }
     }
 }

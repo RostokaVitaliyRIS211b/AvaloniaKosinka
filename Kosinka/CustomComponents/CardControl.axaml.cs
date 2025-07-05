@@ -60,7 +60,7 @@ public partial class CardControl : TemplatedControl
 
     protected void PointerPressed(object sender, PointerPressedEventArgs e)
     {
-        if (sender is Image img && MyCard.IsOpen && MyCard.Zindex==0)
+        if (sender is Image img && MyCard.IsOpen && IsInArea)
         {
             IsDragging = true;
             OriginalPosition = e.GetPosition(MainCanvas);

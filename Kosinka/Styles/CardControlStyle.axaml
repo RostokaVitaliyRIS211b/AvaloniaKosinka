@@ -2,7 +2,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:cc ="clr-namespace:Kosinka.CustomComponents"
 		xmlns:cv ="clr-namespace:Kosinka.Converters"
-		xmlns:md ="clr-namespace:Kosinka.Core.Model">
+		xmlns:md ="clr-namespace:Kosinka.Core.Model"
+		xmlns:hl ="clr-namespace:Kosinka.Helpers">
   <Design.PreviewWith>
     <Border Padding="20">
       <cc:CardControl/>
@@ -10,13 +11,14 @@
   </Design.PreviewWith>
 	<Styles.Resources>
 		<cv:CardToImageConverter x:Key="imgConv"/>
+		<cv:CardToZIndexConverter x:Key="ctzic"/>
 	</Styles.Resources>
 	<Style Selector=":is(cc|CardControl)">
 		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate>
-					<Image Height="130" Width="90" Stretch="UniformToFill" x:Name="PART_img" x:DataType="cc:CardControl" Source="{TemplateBinding MyCard, Converter = {StaticResource imgConv}}"/>
+					<Image Effect="" ZIndex="{TemplateBinding MyCard,Converter={StaticResource ctzic}}" Height="{x:Static hl:CardHelp.Height}" Width="{x:Static hl:CardHelp.Width}" Stretch="UniformToFill" x:Name="PART_img" x:DataType="cc:CardControl" Source="{TemplateBinding MyCard, Converter = {StaticResource imgConv}}"/>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>

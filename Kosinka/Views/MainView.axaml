@@ -6,19 +6,81 @@
              mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="720"
              x:Class="Kosinka.Views.MainView"
              x:DataType="vm:MainViewModel"
-			 xmlns:cc ="clr-namespace:Kosinka.CustomComponents">
+			 xmlns:cc ="clr-namespace:Kosinka.CustomComponents"
+			 xmlns:cv ="clr-namespace:Kosinka.Converters"
+			 xmlns:hl ="clr-namespace:Kosinka.Helpers">
   <Design.DataContext>
     <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:MainViewModel />
   </Design.DataContext>
+	<UserControl.Resources>
+		<cv:CollectionToVisibilityConverter x:Key="ctvc"/>
+		<cv:CollectionToImageConverter x:Key="ctic"/>
+		<cv:AvaloniaObjectToCanvasTopConverter x:Key="aotctc"/>
+		<cv:AvaloniaObjectToCanvasLeftConverter x:Key="clc"/>
+	</UserControl.Resources>
 	<UserControl.Background>
 		<ImageBrush Stretch="UniformToFill" Source="/Assets/back.jpg"/>
 	</UserControl.Background>
+	<UserControl.Styles>
+		<Style Selector="Border">
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="BorderBrush" Value="Black"/>
+			<Setter Property="Width" Value="{x:Static hl:CardHelp.Width}"/>
+			<Setter Property="Height" Value="{x:Static hl:CardHelp.Height}"/>
+		</Style>
+		<Style Selector="Image">
+			<Setter Property="Width" Value="{x:Static hl:CardHelp.Width}"/>
+			<Setter Property="Height" Value="{x:Static hl:CardHelp.Height}"/>
+		</Style>
+	</UserControl.Styles>
 	<Canvas x:Name="MainCanvas">
-		<Button Command="{Binding NextCardCommand}" Margin="10" Height="130" Width="90">
-			<Image Stretch="UniformToFill" Source="/Assets/card.jpg"/>
+		<Button x:Name="DeckButton" IsVisible="{Binding Deck, Converter={StaticResource ctvc}}" Command="{Binding NextCardCommand}" Canvas.Top="30" Margin="30,0,0,0" Height="{x:Static hl:CardHelp.Height}" Width="{x:Static hl:CardHelp.Width}">
+			<Image Stretch="UniformToFill" Source="/Assets/card.png"/>
 		</Button>
-		<cc:CardControl Canvas.Top="10" Canvas.Left="150" MyCard="{Binding CurrentCard}" MainCanvas="{Binding ,ElementName=MainCanvas}"/>
+		<cc:CardControl Canvas.Top="30" Canvas.Left="150" MyCard="{Binding CurrentCard}" MainCanvas="{Binding ,ElementName=MainCanvas}"/>
+		<StackPanel Canvas.Top="30" Canvas.Left="400" Orientation="Horizontal">
+			<StackPanel.Styles>
+				<Style Selector="Border">
+					<Setter Property="Margin" Value="50,0,0,0"/>
+				</Style>
+			</StackPanel.Styles>
+			<Border>
+				<Image Source="{Binding AceHeart, Converter={StaticResource ctic}}"/>
+			</Border>
+			<Border>
+				<Image Source="{Binding AceDiamond, Converter={StaticResource ctic}}"/>
+			</Border>
+			<Border>
+				<Image Source="{Binding AceSpade, Converter={StaticResource ctic}}"/>
+			</Border>
+			<Border>
+				<Image Source="{Binding AceClub, Converter={StaticResource ctic}}"/>
+			</Border>
+		</StackPanel>
+		
+			<Border x:Name="example" Canvas.Top="260" Canvas.Left="170" HorizontalAlignment="Stretch">
+				<cc:TableDeck  Canvas.Top="260" Canvas.Left="170"  MainCanvas="{Binding , ElementName=MainCanvas}" Cards="{Binding TableDeck1}"/>
+			</Border>
+			<Border Canvas.Top="{Binding ,ElementName=example, Converter={StaticResource aotctc}}" Canvas.Left="{Binding , ElementName=example, Converter={StaticResource clc}}" >
+				<cc:TableDeck Canvas.Left="{Binding , ElementName=example, Converter={StaticResource clc}}"  Canvas.Top="{Binding ,ElementName=example, Converter={StaticResource aotctc}}" MainCanvas="{Binding , ElementName=MainCanvas}" Cards="{Binding TableDeck2}"/>
+			</Border>
+			<Border Canvas.Left="{Binding , ElementName=example, Converter={StaticResource clc}}" Canvas.Top="{Binding ,ElementName=example, Converter={StaticResource aotctc}}" >
+				<cc:TableDeck Canvas.Left="{Binding , ElementName=example, Converter={StaticResource clc}}" Canvas.Top="{Binding ,ElementName=example, Converter={StaticResource aotctc}}" MainCanvas="{Binding , ElementName=MainCanvas}" Cards="{Binding TableDeck3}"/>
+			</Border>
+			<Border Canvas.Left="{Binding , ElementName=example, Converter={StaticResource clc}}" Canvas.Top="{Binding ,ElementName=example, Converter={StaticResource aotctc}}" >
+				<cc:TableDeck Canvas.Left="{Binding , ElementName=example, Converter={StaticResource clc}}" Canvas.Top="{Binding ,ElementName=example, Converter={StaticResource aotctc}}" MainCanvas="{Binding , ElementName=MainCanvas}" Cards="{Binding TableDeck4}"/>
+			</Border>
+			<Border Canvas.Left="{Binding , ElementName=example, Converter={StaticResource clc}}" Canvas.Top="{Binding ,ElementName=example, Converter={StaticResource aotctc}}" >
+				<cc:TableDeck Canvas.Left="{Binding , ElementName=example, Converter={StaticResource clc}}" Canvas.Top="{Binding ,ElementName=example, Converter={StaticResource aotctc}}" MainCanvas="{Binding , ElementName=MainCanvas}" Cards="{Binding TableDeck5}"/>
+			</Border>
+			<Border Canvas.Left="{Binding , ElementName=example, Converter={StaticResource clc}}" Canvas.Top="{Binding ,ElementName=example, Converter={StaticResource aotctc}}" >
+				<cc:TableDeck Canvas.Left="{Binding , ElementName=example, Converter={StaticResource clc}}" Canvas.Top="{Binding ,ElementName=example, Converter={StaticResource aotctc}}" MainCanvas="{Binding , ElementName=MainCanvas}" Cards="{Binding TableDeck6}"/>
+			</Border  >
+			<Border Canvas.Left="{Binding , ElementName=example, Converter={StaticResource clc}}" Canvas.Top="{Binding ,ElementName=example, Converter={StaticResource aotctc}}" >
+				<cc:TableDeck  Canvas.Top="{Binding ,ElementName=example, Converter={StaticResource aotctc}}" Canvas.Left="{Binding , ElementName=example, Converter={StaticResource clc}}" MainCanvas="{Binding , ElementName=MainCanvas}" Cards="{Binding TableDeck7}"/>
+			</Border>
+
 	</Canvas>
 </UserControl>

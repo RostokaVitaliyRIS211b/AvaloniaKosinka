@@ -10,8 +10,8 @@ namespace Kosinka.Helpers
 {
     public static class CardHelp
     {
-        public const int Height = 130;
-        public const int Width = 90;
+        public const double Height = 165;
+        public const double Width = 110;
 
         public static bool IsCompatable(Card card1,Card card2)
         {

@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Interactivity;
 
 using Kosinka.Core.Model;
 
@@ -11,13 +12,12 @@ namespace Kosinka.CustomComponents;
 
 public partial class TableDeck : TemplatedControl
 {
-    private Canvas canvas;
     public static readonly StyledProperty<ObservableCollection<Card>> CardsProperty = AvaloniaProperty.Register<TableDeck, ObservableCollection<Card>>(nameof(Cards));
     public static readonly StyledProperty<Canvas> MainCanvasProperty = AvaloniaProperty.Register<CardControl, Canvas>(nameof(MainCanvas));
     public ObservableCollection<Card> Cards
     {
         get => GetValue(CardsProperty);
-        set => SetValue(CardsProperty,value);
+        set => SetValue(CardsProperty, value);
     }
 
     public Canvas MainCanvas
@@ -26,18 +26,26 @@ public partial class TableDeck : TemplatedControl
         set => SetValue(MainCanvasProperty, value);
     }
 
-    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+    protected override void OnLoaded(RoutedEventArgs e)
     {
-        base.OnApplyTemplate(e);
-
-        canvas = e.NameScope.Find<Canvas>("PART_canvas") ?? throw new ArgumentNullException("Не найден Canvas");
+        base.OnLoaded(e);
 
         Initialize();
     }
 
+
     private void Initialize()
     {
-        
-        
+        double MyLeft = Canvas.GetLeft(this);
+        double MyTop = Canvas.GetTop(this);
+        int counter = 0;
+        foreach (Card card in Cards)
+        {
+            CardControl cardControl = new() { MyCard = card, MainCanvas = this.MainCanvas };
+            MainCanvas.Children.Add(cardControl);
+            Canvas.SetLeft(cardControl, MyLeft);
+            Canvas.SetTop(cardControl, MyTop + 50 *counter);
+            ++counter;
+        }
     }
 }

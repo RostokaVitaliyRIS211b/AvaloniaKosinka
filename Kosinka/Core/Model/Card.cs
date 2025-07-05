@@ -39,7 +39,7 @@ namespace Kosinka.Core.Model
         public required CardSuit Suit { get; init; }
 
         private int _z = 0;
-        public int Zindex { get => _z; set { _z = value; OnPropertyChanged(nameof(Zindex)); } }
+        public int ZIndex { get => _z; set { _z = value; OnPropertyChanged(nameof(ZIndex)); } }
 
         private bool _isOpen = false;
         public bool IsOpen { get => _isOpen; set { _isOpen = value; OnPropertyChanged(nameof(IsOpen)); } }

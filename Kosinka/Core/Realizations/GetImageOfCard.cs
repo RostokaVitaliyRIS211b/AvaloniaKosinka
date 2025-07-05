@@ -30,7 +30,7 @@ namespace Cosinka.Viewmodel.Realizations
 
         public IImage GetImage(Card card)
         {
-            PixelRect int32Rect = new(12 + 122 * ((int)card.Rank - 1), 12 + 180 * (int)card.Suit, 108, 162);
+            PixelRect int32Rect = new(12 + 122 * ((int)card.Rank - 1), 12 + 180 * (int)card.Suit, 110, 165);
             CroppedBitmap bitmap = new(CardsMapImage, int32Rect);
             return bitmap;
         }

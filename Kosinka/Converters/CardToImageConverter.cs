@@ -22,9 +22,10 @@ namespace Kosinka.Converters
 {
     internal class CardToImageConverter : IValueConverter
     {
+        private static IGetImageOfCard getImageOfCard = ServiceHelper.ServiceProvider.GetRequiredService<IGetImageOfCard>();
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            IGetImageOfCard getImageOfCard = ServiceHelper.ServiceProvider.GetRequiredService<IGetImageOfCard>();
+            
             if (value is Card card)
             {
                 if(card.IsOpen)
