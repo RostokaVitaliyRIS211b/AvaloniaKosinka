@@ -33,7 +33,7 @@ namespace Kosinka.Core.Model
         Spade
     }
 
-    public class Card : INotifyPropertyChanged
+    public class Card : INotifyPropertyChanged,IComparable
     {
         public required CardRank Rank { get; init; }
         public required CardSuit Suit { get; init; }
@@ -61,6 +61,38 @@ namespace Kosinka.Core.Model
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public int CompareTo(object? obj)
+        {
+            if(obj is Card card)
+            {
+                if(card.Rank == Rank && card.Suit==Suit)
+                {
+                    return 0;
+                }
+                else if (card.Rank > Rank)
+                {
+                    return -1;
+                }
+                else if(card.Rank < Rank)
+                {
+                    return 1;
+                }
+                else if(card.Suit > Suit)
+                {
+                    return -1;
+                }
+                else if(card.Suit < Suit)
+                {
+                    return 1;
+                }
+                return -1;
+            }
+            else
+            {
+                return 1;
+            }
         }
     }
 }

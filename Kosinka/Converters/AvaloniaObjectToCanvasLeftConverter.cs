@@ -15,7 +15,7 @@ namespace Kosinka.Converters
             if (value is AvaloniaObject obj)
             {
                 ++counter;
-                return Canvas.GetLeft(obj)+150*(counter/2);
+                return Canvas.GetLeft(obj)+160*(counter/2);
                 
             }
             else

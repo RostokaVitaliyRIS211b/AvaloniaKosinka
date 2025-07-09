@@ -1,4 +1,5 @@
 ﻿using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
@@ -6,6 +7,7 @@ using Avalonia.Markup.Xaml;
 using Kosinka.Attributes;
 using Kosinka.Core.Interfaces;
 using Kosinka.Core.Model;
+using Kosinka.CustomComponents;
 using Kosinka.ViewModels;
 using Kosinka.Views;
 

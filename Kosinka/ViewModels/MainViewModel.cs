@@ -14,6 +14,7 @@ namespace Kosinka.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
+    public Action<Card?>? NewCardControl { get; set; }
     public required IGetNextCard GetNext {  get; set; }
     public required ObservableCollection<Card> Deck { get; set; } = [];
     public ObservableCollection<Card> AceHeart { get; set; } = [];
@@ -38,6 +39,7 @@ public partial class MainViewModel : ViewModelBase
         try
         {
             CurrentCard = GetNext.NextCard(Deck);
+            NewCardControl?.Invoke(CurrentCard);
         }
         catch(Exception e)
         {

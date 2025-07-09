@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Kosinka.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="720"
+             mc:Ignorable="d" d:DesignWidth="1440" d:DesignHeight="810"
              x:Class="Kosinka.Views.MainView"
              x:DataType="vm:MainViewModel"
 			 xmlns:cc ="clr-namespace:Kosinka.CustomComponents"
@@ -29,6 +29,7 @@
 			<Setter Property="BorderBrush" Value="Black"/>
 			<Setter Property="Width" Value="{x:Static hl:CardHelp.Width}"/>
 			<Setter Property="Height" Value="{x:Static hl:CardHelp.Height}"/>
+			<Setter Property="ZIndex" Value="-100"/>
 		</Style>
 		<Style Selector="Image">
 			<Setter Property="Width" Value="{x:Static hl:CardHelp.Width}"/>
@@ -39,7 +40,6 @@
 		<Button x:Name="DeckButton" IsVisible="{Binding Deck, Converter={StaticResource ctvc}}" Command="{Binding NextCardCommand}" Canvas.Top="30" Margin="30,0,0,0" Height="{x:Static hl:CardHelp.Height}" Width="{x:Static hl:CardHelp.Width}">
 			<Image Stretch="UniformToFill" Source="/Assets/card.png"/>
 		</Button>
-		<cc:CardControl Canvas.Top="30" Canvas.Left="150" MyCard="{Binding CurrentCard}" MainCanvas="{Binding ,ElementName=MainCanvas}"/>
 		<StackPanel Canvas.Top="30" Canvas.Left="400" Orientation="Horizontal">
 			<StackPanel.Styles>
 				<Style Selector="Border">
@@ -60,8 +60,8 @@
 			</Border>
 		</StackPanel>
 		
-			<Border x:Name="example" Canvas.Top="260" Canvas.Left="170" HorizontalAlignment="Stretch">
-				<cc:TableDeck  Canvas.Top="260" Canvas.Left="170"  MainCanvas="{Binding , ElementName=MainCanvas}" Cards="{Binding TableDeck1}"/>
+			<Border x:Name="example" Canvas.Top="260" Canvas.Left="130" HorizontalAlignment="Stretch">
+				<cc:TableDeck  Canvas.Top="260" Canvas.Left="130"  MainCanvas="{Binding , ElementName=MainCanvas}" Cards="{Binding TableDeck1}"/>
 			</Border>
 			<Border Canvas.Top="{Binding ,ElementName=example, Converter={StaticResource aotctc}}" Canvas.Left="{Binding , ElementName=example, Converter={StaticResource clc}}" >
 				<cc:TableDeck Canvas.Left="{Binding , ElementName=example, Converter={StaticResource clc}}"  Canvas.Top="{Binding ,ElementName=example, Converter={StaticResource aotctc}}" MainCanvas="{Binding , ElementName=MainCanvas}" Cards="{Binding TableDeck2}"/>

@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:Kosinka.Views"
-        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="720"
+        mc:Ignorable="d" d:DesignWidth="1440" d:DesignHeight="810"
         x:Class="Kosinka.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="Косынка"
-		Width="1200"
-		Height="720">
+		Width="1440"
+		Height="810">
         <views:MainView />
 </Window>
